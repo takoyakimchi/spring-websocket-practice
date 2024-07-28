@@ -13,11 +13,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic"); // memory-based 메시지 브로커를 지정
-        config.setApplicationDestinationPrefixes("/app"); // /app/hello
+        config.setApplicationDestinationPrefixes("/app"); //  /app/hello
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/gs-guide-websocket"); // 웹 소켓 연결의 endpoint
+        registry.addEndpoint("/gs-guide-websocket");
+        // 메시지 브로커 주소
+        // 웹 소켓 초기 연결하려면 이 주소로 연결해야 됨
+        //  ws://localhost:8080/gs-guide-websocket
     }
 }
