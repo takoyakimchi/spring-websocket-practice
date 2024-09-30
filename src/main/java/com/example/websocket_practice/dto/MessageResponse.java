@@ -1,17 +1,5 @@
 package com.example.websocket_practice.dto;
 
-public class MessageResponse {
+public record MessageResponse(String content) {
 
-    private String content;
-
-    public MessageResponse() {
-    }
-
-    public MessageResponse(String content) {
-        this.content = content;
-    }
-
-    public String getContent() {
-        return content;
-    }
 }
