@@ -11,11 +11,9 @@ import org.springframework.web.util.HtmlUtils;
 @RestController
 public class MessageController {
 
-    @MessageMapping("/hello") //  /app/hello 경로로 publish 해야 메시지가 보내짐
-    @SendTo("/topic/greetings")  //  /topic/greetings 를 subscribe 하고 있는 사람들에게 메시지가 보내짐
+    @MessageMapping("/hello")
+    @SendTo("/topic/greetings")
     public MessageResponse greeting(MessageRequest message) {
-        // HtmlUtils.htmlEscape는 XSS를 예방하기 위해 있는 메서드임
-
         if (message.content().equals("error")) {
             throw new RuntimeException("You can't use that word.");
         }
