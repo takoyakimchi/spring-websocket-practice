@@ -4,10 +4,10 @@ import com.example.websocket_practice.dto.MessageRequest;
 import com.example.websocket_practice.dto.MessageResponse;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
-@Controller
+@RestController
 public class MessageController {
 
     @MessageMapping("/hello") //  /app/hello 경로로 publish 해야 메시지가 보내짐
