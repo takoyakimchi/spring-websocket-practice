@@ -1,5 +1,5 @@
 package com.example.websocket_practice.dto;
 
-public record MessageResponse(String content) {
+public record MessageResponse(boolean isSuccess, String content) {
 
 }

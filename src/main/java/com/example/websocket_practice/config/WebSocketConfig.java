@@ -13,7 +13,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic"); // memory-based 메시지 브로커를 지정
-        config.setApplicationDestinationPrefixes("/app"); //  /app/hello
+        config.setApplicationDestinationPrefixes("/publish"); //  /app/hello
     }
 
     @Override
