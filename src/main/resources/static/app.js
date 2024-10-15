@@ -45,11 +45,12 @@ function disconnect() {
   console.log("Disconnected");
 }
 
-function sendName() {
+function sendChat() {
   stompClient.publish({
     destination: "/publish/chat",
     body: JSON.stringify({'username': $("#na").val(), 'content': $("#name").val()})
   });
+  document.getElementById('name').value = '';
 }
 
 function showChat(message) {
@@ -60,5 +61,5 @@ $(function () {
   $("form").on('submit', (e) => e.preventDefault());
   $( "#connect" ).click(() => connect());
   $( "#disconnect" ).click(() => disconnect());
-  $( "#send" ).click(() => sendName());
+  $( "#send" ).click(() => sendChat());
 });
