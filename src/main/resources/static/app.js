@@ -7,8 +7,10 @@ stompClient.onConnect = (frame) => {
   console.log('Connected: ' + frame);
 
   stompClient.subscribe('/topic/chat', (greeting) => {
-    let message = JSON.parse(greeting.body).content;
-    showChat(message);
+    let body = JSON.parse(greeting.body);
+    let username = body.username;
+    let content = body.content;
+    showChat(username + ": " + content);
   });
 };
 
