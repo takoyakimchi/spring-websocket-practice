@@ -15,7 +15,7 @@ public class MessageController {
     private static final Logger log = LoggerFactory.getLogger(MessageController.class);
 
     @MessageMapping("/chat")
-    @SendTo("/topic/chat")
+    @SendTo("/subscribe/chat")
     public ChatMessageResponse sendMessage(ChatMessageRequest request) {
         return new ChatMessageResponse(request.username(), request.content());
     }
