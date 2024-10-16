@@ -6,13 +6,21 @@ stompClient.onConnect = (frame) => {
   setConnected(true);
   console.log('Connected: ' + frame);
 
-  stompClient.subscribe('/subscribe/chat', (message) => {
+  stompClient.subscribe('/subscribe/chat.' + $("#chatRoomId").val(), (message) => {
     let body = JSON.parse(message.body);
     let username = body.username;
     let content = body.content;
     showChat(username + ": " + content);
   });
 };
+
+function sendChat() {
+  stompClient.publish({
+    destination: "/publish/chat." + $("#chatRoomId").val(),
+    body: JSON.stringify({'username': $("#na").val(), 'content': $("#name").val()})
+  });
+  document.getElementById('name').value = '';
+}
 
 stompClient.onWebSocketError = (error) => {
   console.error('Error with websocket', error);
@@ -43,14 +51,6 @@ function disconnect() {
   stompClient.deactivate();
   setConnected(false);
   console.log("Disconnected");
-}
-
-function sendChat() {
-  stompClient.publish({
-    destination: "/publish/chat",
-    body: JSON.stringify({'username': $("#na").val(), 'content': $("#name").val()})
-  });
-  document.getElementById('name').value = '';
 }
 
 function showChat(message) {
